@@ -8,11 +8,6 @@ I created this project to teach myself Angular X and Bootstrap 4. The board can 
 
 It's not necessary to enable CORS in Jira, the board gets served over a web-server with a built-in HTTP reverse-proxy.
 
-## TODOs
-* Dockerize (nginx proxy + server cache + env vars)
-* CI builds and push to Docker Hub
-* Mock Backend
-
 ## Development / Contributing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
