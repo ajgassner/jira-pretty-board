@@ -1,0 +1,16 @@
+{
+  "/jira": {
+    "target": {
+      "host": "yourJira.atlassian.net",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "pathRewrite": {
+      "^/jira": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "auth": "jiraUser@password"
+  }
+}

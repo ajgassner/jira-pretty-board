@@ -1,0 +1,32 @@
+<form [formGroup]="configForm" novalidate (ngSubmit)="save()">
+  <div class="modal-header">
+    <h4 class="modal-title">Configuration</h4>
+    <button type="button" class="close" (click)="activeModal.dismiss()">
+      <span>&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="regex">Jump to Sprint</label>
+      <input type="text" class="form-control" formControlName="regex" id="regex" placeholder="Enter regular expression">
+      <small class="form-text text-muted">
+        Enter a regular expression, e.g. ^DeltaForce.*$, to automatically select a Sprint when the board gets loaded.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="cache-ttl">Cache TTL</label>
+      <input type="text" class="form-control" formControlName="ttl" id="cache-ttl" placeholder="Enter seconds">
+      <small [hidden]="configForm.controls.ttl.valid" class="text-danger">
+        Numeric value required. Minimum is {{minTTL}} seconds.
+      </small>
+      <small class="form-text text-muted">
+        Time To Live (TTL) of the client cache in seconds. Defaults to {{defaultTTL}} seconds.
+      </small>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" [disabled]="!configForm.valid" class="btn btn-primary">Save</button>
+  </div>
+</form>

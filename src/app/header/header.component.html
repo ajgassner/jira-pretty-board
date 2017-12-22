@@ -1,0 +1,35 @@
+<div [hidden]="config.hideHeader" class="container-fluid mt-1" *ngIf="boardContent | async; let data">
+  <div class="row align-items-center">
+    <div class="col-lg-6">
+      <ul class="list-unstyled">
+        <li *ngFor="let issue of issuesWithSubtasks" class="issue text-truncate" title="{{buildTooltip(issue)}}" (mouseenter)="highlightIssue(issue)"
+          (mouseleave)="highlightIssue(null)">
+          <i class="fa fa-fw fa-stop" [ngStyle]="{'color': issue.color}"></i>
+          <img height="16" wifth="16" class="align-text-bottom" src="{{issue.fields.priority.iconUrl}}">
+          <a href="{{data.jiraBaseUrl}}/browse/{{issue.key}}" target="_blank" class="text-white text-uppercase">{{issue.key}}</a>
+          <span>{{issue.fields.summary}}</span>
+          <span class="status text-uppercase" [ngClass]="getStatusColorCssClass(issue)">
+            {{issue.fields.status.name}} ({{issue.fields.customfield_10036 ? issue.fields.customfield_10036 : '-'}})
+            <i class="fa fa-fw" [ngClass]="getStatusIconCssClass(issue)"></i>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-2 text-secondary">
+      <div class="text-uppercase">Completed Storypoints</div>
+      <span class="display-1 font-weight-bold">{{data.storyPointMetric.percentage}}%</span>
+      ({{data.storyPointMetric.done}} / {{data.storyPointMetric.total}})
+    </div>
+    <div class="col-lg-2 text-secondary">
+      <div class="text-uppercase">Closed vs. Unclosed</div>
+      <span class="display-1 font-weight-bold">{{data.closedRatio.percentage}}%</span>
+      ({{data.closedRatio.closed}} / {{data.closedRatio.total}})
+    </div>
+    <div class="col-lg-2 text-secondary">
+      <div class="text-uppercase">Story Tasks vs. Non-Story Tasks</div>
+      <span class="display-1 font-weight-bold">{{data.taskRatio.percentage}}%</span>
+      ({{data.taskRatio.storyTasks}} / {{data.taskRatio.total}})
+    </div>
+  </div>
+</div>

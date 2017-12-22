@@ -1,0 +1,12 @@
+.issue {
+  max-width: calc(100% - 150px);
+
+  .status {
+    position: absolute;
+    right: 0;
+  }
+
+  &:hover {
+    opacity: .5;
+  }
+}

@@ -1,0 +1,35 @@
+<div *ngIf="!columns" class="container">
+  <div class="text-center mt-3">
+    Please select a sprint...
+  </div>
+</div>
+
+<div *ngIf="columns" class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table table-responsive table-sm">
+        <thead>
+          <tr>
+            <th class="text-nowrap text-uppercase border-top-0 border-bottom-0 text-secondary" *ngFor="let column of columns" [hidden]="column.hidden">
+              {{column.name}} ({{column.issues.length}})
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="config.splitBoard">
+            <td class="border-top-0" *ngFor="let column of columns" [hidden]="column.hidden">
+              <app-issue *ngFor="let issue of column.issues | issueFilter: searchTerm" [issue]="issue" [taskSize]="config.issueSize" [baseUrl]="baseUrl" [highlightMode]="highlightMode"
+                [last24hOnly]="config.last24hOnly" [hidden]="!issue.color"></app-issue>
+            </td>
+          </tr>
+          <tr>
+            <td class="border-top-0" *ngFor="let column of columns" [hidden]="column.hidden">
+              <app-issue *ngFor="let issue of column.issues | issueFilter: searchTerm" [issue]="issue" [taskSize]="config.issueSize" [baseUrl]="baseUrl" [highlightMode]="highlightMode"
+                [last24hOnly]="config.last24hOnly" [hidden]="config.splitBoard && issue.color"></app-issue>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

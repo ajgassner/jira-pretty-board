@@ -1,0 +1,25 @@
+$fa-font-path: "~font-awesome/fonts";
+$body-bg: black;
+$body-color: white;
+@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+
+@include media-breakpoint-between(xs, md) {
+  .display-1 {
+    font-size: 42px;
+  }
+}
+@include media-breakpoint-between(lg, lg) {
+  .display-1 {
+    font-size: 56px;
+  }
+}
+
+.modal {
+  color: $gray-800;
+}
+
+.app-loading {
+  text-align: center;
+  margin-top: 100px;
+}

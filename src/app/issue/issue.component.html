@@ -1,0 +1,18 @@
+<div title="{{buildTooltip()}}" class="task" [ngClass]="{'blocker': isBlocker(), 'task-large': isLarge(), 'task-medium': isMedium(),'task-small': isSmall()}"
+  [ngStyle]="{'background-color': issue.color, 'opacity': getOpacity()}" [hidden]="last24hOnly && isOlderThan24h()">
+  <small>
+    <div class="float-right" *ngIf="isLarge() || isMedium()">
+      <span>{{getAssigneeName() | ellipsis: (isLarge() ? 10 : 5)}}</span>
+      <img *ngIf="issue.fields.assignee" class="align-text-bottom" width="16" height="16" src="{{issue.fields.assignee.avatarUrls['16x16']}}">
+    </div>
+
+    <img height="16" width="16" class="align-text-bottom" src="{{issue.fields.issuetype.iconUrl}}">
+    <img height="16" width="16" class="align-text-bottom" src="{{issue.fields.priority.iconUrl}}">
+    <a href="{{baseUrl}}/browse/{{issue.key}}" target="_blank" class="text-white text-uppercase">{{issue.key}}</a>
+    <br>
+    <span *ngIf="isLarge()">{{issue.fields.summary | ellipsis:40 }}</span>
+    <span *ngIf="issue.fields.flagged && (isLarge() || isMedium())" class="text-danger">
+      <i class="fa fa-flag"></i>
+    </span>
+  </small>
+</div>
