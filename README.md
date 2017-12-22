@@ -1,7 +1,9 @@
 #TODO
 * docker (nginx proxy + server cache)
 
-# JiraPrettyBoard
+# Jira Pretty Board
+
+![Screenshot](https://github.com/ajgassner/jira-pretty-board/blob/master/doc/screenshot.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
