@@ -11,6 +11,7 @@ It's not necessary to enable CORS in Jira, the board gets served over a web-serv
 ## TODOs
 * Dockerize (nginx proxy + server cache + env vars)
 * CI builds and push to Docker Hub
+* Mock Backend
 
 ## Development / Contributing
 
