@@ -8,6 +8,22 @@ I created this project to teach myself Angular X and Bootstrap 4. The board can 
 
 It's not necessary to enable CORS in Jira, the board gets served over a web-server with a built-in HTTP reverse-proxy.
 
+## Usage
+
+### The simple way
+
+There is a Docker image (https://hub.docker.com/r/ajgassner/jira-pretty-board/) for the board, simply run following command to get up and running:
+
+`docker run -d -p 80:80 -e JIRA_HOST="https://yourJiraInstance.atlassian.net" -e JIRA_USER="yourJiraUsernameOrEmail" -e JIRA_PW="yourJiraPassword" -e CACHE_MINUTES=1 --name jira-pretty-board ajgassner/jira-pretty-board:latest`
+
+The environment variable `CACHE_MINUTES` defines the time to live (TTL) for the server HTTP cache. Please also notice that's good for security reasons to restrict the API user to read-only access.
+
+Now just enter `http://localhost` in you browser and you should be done.
+
+### The other way
+
+See below how to make a production build of the board. You will get a folder with all required HTML/JS/CSS files to run the app. Important: You will need to setup a HTTP reverse proxy manually in order to make the app happy.
+
 ## Development / Contributing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0. Please install NodeJS 8.x on your system and run `npm install` in the project root directory. Install Angular CLI too: `npm install -g @angular/cli`
