@@ -8,11 +8,11 @@ server {
 		index index.html;
 	}
 
-	location /jira/ {
+	location /jira-api/ {
 		proxy_cache board;
 		proxy_cache_valid ${CACHE_MINUTES}m;
 		proxy_ignore_headers X-Accel-Expires Expires Cache-Control Set-Cookie;  
-		proxy_pass ${JIRA_HOST};
+		proxy_pass ${JIRA_HOST}/rest/;
 		proxy_set_header Authorization "Basic ${BASE64_AUTH}";
 	}
 }

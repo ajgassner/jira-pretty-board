@@ -37,10 +37,10 @@ export class JiraService {
 
   @Cached('active-sprints')
   findAllActiveSprints(): Observable<Sprint[]> {
-    return this.http.get<BoardResponse>('/jira/rest/agile/1.0/board')
+    return this.http.get<BoardResponse>('/jira-api/agile/1.0/board')
       .map(br => br.values)
       .concatMap(boards => {
-        const observables = boards.map(b => this.http.get<SprintResponse>(`/jira/rest/agile/1.0/board/${b.id}/sprint`, {
+        const observables = boards.map(b => this.http.get<SprintResponse>(`/jira-api/agile/1.0/board/${b.id}/sprint`, {
           params: new HttpParams().set('state', 'active')
         }).map(sr => sr.values));
 
@@ -58,7 +58,7 @@ export class JiraService {
     params = params.set('maxResults', '300');
     params = params.set('fields', 'summary,assignee,flagged,issuetype,priority,subtasks,status,updated,customfield_10036');
 
-    return this.http.get<IssueResponse>(`/jira/rest/agile/1.0/sprint/${sprintId}/issue`, {
+    return this.http.get<IssueResponse>(`/jira-api/agile/1.0/sprint/${sprintId}/issue`, {
       params: params
     }).map(resp => {
       let boardContent = new BoardContent();
@@ -75,7 +75,7 @@ export class JiraService {
 
   @Cached('board-columns')
   getBoardColumns( @CacheKey boardId: string): Observable<Column[]> {
-    return this.http.get<BoardConfigResponse>(`/jira/rest/agile/1.0/board/${boardId}/configuration`)
+    return this.http.get<BoardConfigResponse>(`/jira-api/agile/1.0/board/${boardId}/configuration`)
       .map(resp => {
         return resp.columnConfig.columns;
       });
