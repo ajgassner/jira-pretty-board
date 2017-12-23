@@ -1,5 +1,11 @@
 language: node_js
 node_js:
   - "8"
+env:
+  - IMAGE_NAME=ajgassner/jira-pretty-board:latest
 script:
+  - npm run-script lint
   - npm run-script build
+  - docker build -t $IMAGE_NAME .
+  - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+  - docker push $IMAGE_NAME
