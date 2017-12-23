@@ -10,9 +10,9 @@ It's not necessary to enable CORS in Jira, the board gets served over a web-serv
 
 ## Development / Contributing
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0. Please install NodeJS 8.x on your system and run `npm install` in the project root directory. Install Angular CLI too: `npm install -g @angular/cli`
 
-### First of all adapt the Jira config
+### Adapt the Jira config
 
 Edit `proxy.conf.json` and enter your Jira Cloud URL and the authentication credentials.
 
@@ -26,7 +26,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use `npm build` for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use `npm run-script build` for a production build.
 
 ### Further help
 
