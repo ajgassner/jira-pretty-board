@@ -1,6 +1,6 @@
 # Jira Pretty Board [![Build Status](https://travis-ci.org/ajgassner/jira-pretty-board.svg?branch=master)](https://travis-ci.org/ajgassner/jira-pretty-board)
 
-![Screenshot](https://github.com/ajgassner/jira-pretty-board/blob/master/doc/screenshot.png)
+![Screencast](https://github.com/ajgassner/jira-pretty-board/blob/master/doc/screencast.gif)
 
 ## What is it?
 
