@@ -14,7 +14,15 @@ It's not necessary to enable CORS in Jira, the board gets served over a web-serv
 
 There is a Docker image (https://hub.docker.com/r/ajgassner/jira-pretty-board/) for the board, simply run following command to get up and running:
 
-`docker run -d -p 80:80 -e JIRA_HOST="https://yourJiraInstance.atlassian.net" -e JIRA_USER="yourJiraUsernameOrEmail" -e JIRA_PW="yourJiraPassword" -e CACHE_MINUTES=1 --name jira-pretty-board ajgassner/jira-pretty-board:latest`
+```
+docker run -d -p 80:80 \
+-e JIRA_HOST="https://yourJiraInstance.atlassian.net" \
+-e JIRA_USER="yourJiraUsernameOrEmail" \
+-e JIRA_PW="yourJiraPassword" \
+-e CACHE_MINUTES=1 \
+--name jira-pretty-board \
+ajgassner/jira-pretty-board:latest
+```
 
 The environment variable `CACHE_MINUTES` defines the time to live (TTL) for the server HTTP cache. Please also notice that's good for security reasons to restrict the API user to read-only access.
 
@@ -42,7 +50,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use `npm run-script build` for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use `npm run build` for a production build.
 
 ### Further help
 

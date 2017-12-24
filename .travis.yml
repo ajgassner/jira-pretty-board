@@ -4,8 +4,8 @@ node_js:
 env:
   - IMAGE_NAME=${DOCKER_HUB_USERNAME}/jira-pretty-board:latest
 script:
-  - npm run-script lint
-  - npm run-script build
+  - npm run lint
+  - npm run build
   - docker build -t $IMAGE_NAME .
   - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
   - docker push $IMAGE_NAME
