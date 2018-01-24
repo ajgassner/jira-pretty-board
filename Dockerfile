@@ -7,5 +7,5 @@ ADD dist /usr/share/nginx/html
 
 RUN mkdir -p /var/nginx-cache/board
 
-CMD /bin/bash -c "export BASE64_AUTH=`echo -n ${JIRA_USER}:${JIRA_PW} | base64` && envsubst < /nginx.conf.tpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'" 
+CMD /bin/bash -c "export BASE64_AUTH=`echo -n ${JIRA_USER}:${JIRA_PW} | base64 -w 0` && envsubst < /nginx.conf.tpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'" 
 
