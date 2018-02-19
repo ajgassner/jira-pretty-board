@@ -2,7 +2,7 @@
   [ngStyle]="{'background-color': issue.color, 'opacity': getOpacity()}" [hidden]="last24hOnly && isOlderThan24h()">
   <small>
     <div class="float-right" *ngIf="isLarge() || isMedium()">
-      <span>{{getAssigneeName() | ellipsis: (isLarge() ? 10 : 5)}}</span>
+      <span>{{getAssigneeName() | ellipsis: 5}}</span>
       <img *ngIf="issue.fields.assignee" class="align-text-bottom" width="16" height="16" src="{{issue.fields.assignee.avatarUrls['16x16']}}">
     </div>
 
