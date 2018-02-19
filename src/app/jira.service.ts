@@ -30,7 +30,12 @@ export class JiraService {
     '#4233b3',
     '#006717',
     '#795548',
-    '#610606'
+    '#610606',
+    '#a74a79',
+    '#86188c',
+    '#42637f',
+    '#bb4906',
+    '#0d4e2d'
   ];
 
   constructor(private http: HttpClient) { }
