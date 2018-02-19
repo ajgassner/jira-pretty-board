@@ -1,4 +1,4 @@
-<div [hidden]="config.hideHeader" class="container-fluid mt-1" *ngIf="boardContent | async; let data">
+<div [hidden]="config.hideHeader" class="container-fluid mt-1" *ngIf="boardContent != null">
   <div class="row align-items-center">
     <div class="col-lg-6">
       <ul class="list-unstyled">
@@ -6,7 +6,7 @@
           (mouseleave)="highlightIssue(null)">
           <i class="fa fa-fw fa-stop" [ngStyle]="{'color': issue.color}"></i>
           <img height="16" wifth="16" class="align-text-bottom" src="{{issue.fields.priority.iconUrl}}">
-          <a href="{{data.jiraBaseUrl}}/browse/{{issue.key}}" target="_blank" class="text-white text-uppercase">{{issue.key}}</a>
+          <a href="{{boardContent.jiraBaseUrl}}/browse/{{issue.key}}" target="_blank" class="text-white text-uppercase">{{issue.key}}</a>
           <span>{{issue.fields.summary}}</span>
           <span class="status text-uppercase" [ngClass]="getStatusColorCssClass(issue)">
             {{issue.fields.status.name}} ({{issue.fields.customfield_10036 ? issue.fields.customfield_10036 : '-'}})
@@ -18,18 +18,18 @@
 
     <div class="col-lg-2 text-secondary">
       <div class="text-uppercase text-nowrap">Completed Storypoints</div>
-      <span class="display-1 font-weight-bold">{{data.storyPointMetric.percentage}}%</span>
-      ({{data.storyPointMetric.done}} / {{data.storyPointMetric.total}})
+      <span class="display-1 font-weight-bold">{{boardContent.storyPointMetric.percentage}}%</span>
+      ({{boardContent.storyPointMetric.done}} / {{boardContent.storyPointMetric.total}})
     </div>
     <div class="col-lg-2 text-secondary">
       <div class="text-uppercase text-nowrap">Closed vs. Unclosed</div>
-      <span class="display-1 font-weight-bold">{{data.closedRatio.percentage}}%</span>
-      ({{data.closedRatio.closed}} / {{data.closedRatio.total}})
+      <span class="display-1 font-weight-bold">{{boardContent.closedRatio.percentage}}%</span>
+      ({{boardContent.closedRatio.closed}} / {{boardContent.closedRatio.total}})
     </div>
     <div class="col-lg-2 text-secondary">
       <div class="text-uppercase text-nowrap">Story Tasks vs. Non-Story Tasks</div>
-      <span class="display-1 font-weight-bold">{{data.taskRatio.percentage}}%</span>
-      ({{data.taskRatio.storyTasks}} / {{data.taskRatio.total}})
+      <span class="display-1 font-weight-bold">{{boardContent.taskRatio.percentage}}%</span>
+      ({{boardContent.taskRatio.storyTasks}} / {{boardContent.taskRatio.total}})
     </div>
   </div>
 </div>

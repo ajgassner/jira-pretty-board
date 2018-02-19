@@ -23,7 +23,7 @@ export class HeaderComponent implements OnDestroy {
 
   private sprint: Sprint;
 
-  boardContent: Observable<BoardContent>;
+  boardContent: BoardContent = null;
   issuesWithSubtasks: Issue[] = [];
   config: BoardConfig;
 
@@ -56,7 +56,8 @@ export class HeaderComponent implements OnDestroy {
   }
 
   private populateData(sprint: Sprint): void {
-    this.boardContent = this.jira.getBoardContent(sprint.id).map(boardContent => {
+    this.jira.getBoardContent(sprint.id).subscribe(boardContent => {
+      this.boardContent = boardContent;
       this.issuesWithSubtasks = boardContent.issues.filter(issue => issue.fields.subtasks.length > 0);
       return boardContent;
     });
