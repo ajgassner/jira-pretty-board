@@ -2,6 +2,8 @@
 
 ## What is it?
 
+![Screenshot](https://github.com/ajgassner/jira-pretty-board/blob/master/doc/screenshot.jpg)
+
 I created this project to teach myself Angular X and Bootstrap 4. The board can be used as an alternative to the built-in Jira board. In my opinion it's a bit clearer than the standard solution. I have tested the functionality with the Jira Cloud API only (https://developer.atlassian.com/cloud/jira/software/rest/). I'm not sure if the board currently works with the on-premise Jira Server edition.
 
 It's not necessary to enable CORS in Jira, the board gets served over a web-server with a built-in HTTP reverse-proxy.
